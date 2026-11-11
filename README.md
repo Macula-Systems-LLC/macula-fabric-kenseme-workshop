@@ -1,6 +1,6 @@
 # Macula Microsoft Fabric and Kenseme Workshop
 
-Hands-on labs for **Macula's four-hour Microsoft Fabric workshop on [[PLACEHOLDER: workshop date]]**. In the first two hours you build a working Fabric lakehouse in your own workspace and take data from raw files to a medallion architecture (bronze, silver, gold). After a break, you give that data business meaning: you use Kenseme to build an ontology, bind it to a gold lakehouse, publish it to Fabric, and ask a Fabric data agent questions in plain English.
+Hands-on labs for **Macula's four-hour Microsoft Fabric workshop**. In the first two hours you build a working Fabric lakehouse in your own workspace and take data from raw files to a medallion architecture (bronze, silver, gold). After a break, you give that data business meaning: you use Kenseme to build an ontology, bind it to a gold lakehouse, publish it to Fabric, and ask a Fabric data agent questions in plain English.
 
 Please complete the setup below **before the session**. It takes about 15 minutes.
 
@@ -25,7 +25,6 @@ Please complete the setup below **before the session**. It takes about 15 minute
 - **For Labs 1 to 4:** a trial or paid capacity is enough.
 - **For Lab 5, parts A to F (ontology):** your Fabric administrator must turn on two tenant settings: **Users can create Fabric items** and **Users can create ontology (preview) items**. The Fabric ontology feature is in preview. See [Ontology tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings).
 - **For Lab 5, parts G and H (data agent):** a **paid** Fabric capacity (F2 or higher) with the data agent tenant settings turned on, including the cross-geo processing and storing settings for AI. Microsoft states that data agents are not supported on a trial capacity. If you only have a trial capacity, you can still do Labs 1 to 4 and Lab 5 parts A to F, and you will watch the facilitator do parts G and H. See [Data agent tenant settings](https://learn.microsoft.com/fabric/data-science/data-agent-tenant-settings). If you are unsure, ask your Fabric administrator before the session.
-- **A Kenseme account.** Send your work email address to [[PLACEHOLDER: Macula contact name and email]] by [[PLACEHOLDER: date]]. You will receive an invitation from Kenseme. Accept it before the session and check that you can sign in. [[PLACEHOLDER: Kenseme web address and sign-in notes]]
 
 ## Step 1: Create a workspace
 
@@ -59,9 +58,7 @@ Several labs upload sample files from this repo, so you need a copy on your lapt
 - [ ] I can sign in at https://app.fabric.microsoft.com
 - [ ] I have a workspace named `Macula-FabricDemo-Workshop`
 - [ ] It contains a lakehouse named `MaculaWorkshopDemo` with empty **Tables** and **Files** folders
-- [ ] I have the lab files unzipped on my laptop
 - [ ] I know whether my capacity is paid (needed for the data agent in Lab 5) or trial
-- [ ] I accepted my Kenseme invitation and can sign in
 
 If you get stuck on any step, reply to your registration email before the session and we will help you sort it out.
 

@@ -14,29 +14,34 @@ Process document  -->  Kenseme builds the ontology  -->  Bind to the gold lakeho
 
 > **Trial capacity?** Parts A to F run on the same workspace as the earlier labs if your Fabric administrator turned on the ontology settings listed in the [README](../../README.md). Parts G and H need a paid Fabric capacity (F2 or higher), because Microsoft does not support data agents on a trial capacity. If that is you, watch your facilitator do Parts G and H.
 
-## Part A: Create the gold lakehouse (about 10 minutes)
+## Part A: Check your gold lakehouse (about 5 minutes)
 
-Kenseme binds the ontology to a lakehouse. You create a second lakehouse for it and fill it with a gold layer designed for this lab.
+Kenseme binds the ontology to the **AdventureWorksGold** lakehouse that you built in Lab 4. Check that it is ready before you start.
 
-1. In your workspace, select **+ New item**, search for **Lakehouse**, and create a lakehouse named `AdventureWorksGold`.
-1. Leave the **Lakehouse schemas** checkbox **selected**. The tables are created in the `dbo` schema.
+1. In your workspace, open the **AdventureWorksGold** lakehouse. In the **Explorer** pane, open the **...** menu for **Tables**, select **Refresh**, and expand the **dbo** schema. Verify that these eight tables exist, with these row counts:
 
-[[PLACEHOLDER A3: Add the steps to load the gold layer. Planned: import Labs/Lab5/Assets/Create-AdventureWorksGold.ipynb (Import > Notebook > From this computer), add the AdventureWorksGold lakehouse (Add data items > From OneLake catalog), select Run all, and wait for it to finish.]]
+    | Table | What it holds | Rows |
+    | --- | --- | --- |
+    | `DimCustomer` | Customers | 12,459 |
+    | `DimDate` | One row per day | 1,280 |
+    | `DimProduct` | Products | 295 |
+    | `DimProductCategory` | Product categories and category groups | 37 |
+    | `DimSalesChannel` | Sales channels (Online and Reseller) | 2 |
+    | `FactSalesOrder` | One row per order | 16,491 |
+    | `FactSalesOrderLine` | One row per order line | 33,260 |
+    | `FactSalesOrderLineDetail` | One row per order line, flattened | 33,260 |
 
-1. When the notebook finishes, open the **...** menu for **Tables** in the **Explorer** pane and select **Refresh**. Verify that these six tables exist in the **dbo** schema:
+1. Switch to the **SQL analytics endpoint**, select **New SQL query**, and run the key check from Lab 4. You should still see **17** rows. Kenseme needs these keys.
 
-    | Table | What it holds |
-    | --- | --- |
-    | `DimCustomer` | Customers |
-    | `DimProductCategory` | Product categories and category groups |
-    | `DimProduct` | Products |
-    | `DimSalesChannel` | Sales channels (Online and Reseller) |
-    | `FactSalesOrder` | One row per order |
-    | `FactSalesOrderLineDetail` | One row per order line |
+    ```sql
+    SELECT OBJECT_NAME(parent_object_id) AS tbl, name FROM sys.key_constraints
+    UNION ALL
+    SELECT OBJECT_NAME(parent_object_id), name FROM sys.foreign_keys;
+    ```
 
-    [[PLACEHOLDER A4: Add expected row counts for each table once the gold notebook is final.]]
+    > **Missing tables or keys?** Go back to Lab 4 and run the gold notebook and the keys script. Tell your facilitator if you are stuck.
 
-1. Select **Run** > **Stop session** if the notebook is still running.
+1. Make sure no notebook sessions are still running. Select **Run** > **Stop session** in any open notebook.
 1. In your workspace, create a folder for the objects Kenseme will create. Select **New folder** and name it `Kenseme - AW Online Sales`.
 
 ## Part B: Connect Kenseme to your workspace (about 10 minutes)
@@ -139,7 +144,7 @@ Code Interpreter lets the agent write and run a small Python program when a ques
 
 Type each question exactly as written. Clear the chat between questions. Each takes 30 to 60 seconds. Open the run steps to see how the agent answered, and for questions 7 to 10 open the Python code.
 
-> **Your numbers depend on your gold lakehouse.** The expected answers below come from the facilitator's gold lakehouse. If your numbers differ slightly, check that your gold notebook ran once, to the end.
+> **Your numbers depend on your gold lakehouse.** The expected answers below come from the same gold notebook you ran in Lab 4. If your numbers differ, check that the row counts in Part A match. You can also compare with the SQL answers in notebook 03 from Lab 4.
 
 ### Act 1: The agent speaks the business's language
 
@@ -190,7 +195,7 @@ The story the ten charts tell: online sales took off in the second half of 2021,
 You created several items in this lab. Remove them when you finish exploring, so they stop using capacity.
 
 1. Delete the data agent, the graph item, the ontology item, and the lakehouse item in the `Kenseme - AW Online Sales` folder.
-1. Delete the `AdventureWorksGold` lakehouse.
+1. Delete the `AdventureWorksGold` and `AdventureWorksSilver` lakehouses if you no longer need them.
 1. Follow the cleanup steps in the [README](../../README.md) to remove the whole workspace.
 
 ## What you learned
@@ -199,6 +204,6 @@ An ontology is a shared, written map of your business: what things are, how they
 
 The step to take this week: pick one process you have already written down, and the five questions it should answer. You almost certainly have the data. What an agent is missing is the meaning.
 
-**Previous:** [Lab 4: Build a medallion architecture](../Lab4/04-medallion-architecture.md)
+**Previous:** [Lab 4: Build the gold layer](../Lab4/04-build-gold-layer.md)
 
 **Back to the workshop:** [README](../../README.md)

@@ -1,6 +1,6 @@
 # Macula Microsoft Fabric and Kenseme Workshop
 
-Hands-on labs for **Macula's four-hour Microsoft Fabric workshop on [[PLACEHOLDER: workshop date]]**. In the first two hours you build a medallion architecture in your own Fabric workspace: you land raw files and ingest them with a pipeline (bronze), clean them with Spark (silver), and shape them into a star schema (gold). After a break, you give that gold data business meaning: you use Kenseme to build an ontology, bind it to your gold lakehouse, publish it to Fabric, and ask a Fabric data agent questions in plain English.
+Hands-on labs for **Macula's four-hour Microsoft Fabric workshop**. In the first two hours you build a medallion architecture in your own Fabric workspace: you land raw files and ingest them with a pipeline (bronze), clean them with Spark (silver), and shape them into a star schema (gold). After a break, you give that gold data business meaning: you use Kenseme to build an ontology, bind it to your gold lakehouse, publish it to Fabric, and ask a Fabric data agent questions in plain English.
 
 Please complete the setup below **before the session**. It takes about 15 minutes.
 
